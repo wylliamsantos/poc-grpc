@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package address;
+
+option java_package = "com.proto.address";
+option java_multiple_files = true;
+
+message Address {
+    string id = 1;
+    string street = 2;
+    string number = 3;
+}
+
+message CreateAddressRequest {
+    Address address = 1;
+}
+
+message CreateAddressResponse {
+    Address address = 1;
+}
+
+message DeleteAddressRequest {
+    string addressId = 1;
+}
+
+message DeleteAddressResponse {
+    string addressId = 1;
+}
+
+message ListAddressRequest {
+
+}
+
+message ListAddressResponse {
+    Address address = 1;
+}
+
+service AddressService {
+    rpc CreateAddress(CreateAddressRequest) returns (CreateAddressResponse) {};
+    rpc DeleteAddress(DeleteAddressRequest) returns (DeleteAddressResponse) {}; // return NOT_FOUND if not found
+    rpc ListAddress(ListAddressRequest) returns (stream ListAddressResponse) {};
+}

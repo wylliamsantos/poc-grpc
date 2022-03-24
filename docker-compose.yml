@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=ntconsult_grpc
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    network_mode: "host"
